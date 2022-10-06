@@ -2,10 +2,12 @@
 import cors from 'cors';
 import express,{ Application } from 'express';
 import morgan from 'morgan';
+import alumnosRouter from './routes/alumnos.router';
 
-import cargaMasivaRouter from './routes/carga.masiva.router';
+import facturaRouter from './routes/factura.router';
 import getRouter from './routes/index.router';
 import modeloRouter from './routes/post.routers';
+import tallaRouter from './routes/tallas.routers';
 
 
 export class App{
@@ -21,7 +23,7 @@ export class App{
   }
   
   settings(): void{
-    this.app.set('port', this.port || process.env.PORT || 3000)
+    this.app.set('port', this.port || process.env.PORT || 3500)
   }
   
   middlewares(): void{
@@ -32,8 +34,11 @@ export class App{
 
   routes(): void{
     this.app.use(getRouter);
-    this.app.use('/modelo',modeloRouter);
-    this.app.use('/carga',cargaMasivaRouter);
+    this.app.use('/api/alumnos', alumnosRouter);
+    this.app.use('/api/modelos', modeloRouter);
+    this.app.use('/api/modelo/talla', tallaRouter);
+    //this.app.use('/carga', cargaMasivaRouter);
+    this.app.use('/api', facturaRouter);
 
   }
 

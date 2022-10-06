@@ -10,8 +10,8 @@ export async function connection (): Promise<Pool>{
     return await createPool({
         host: 'localhost',
         user: 'root',
-        password: '',
-        database: 'pleaser-shoes',
-        connectionLimit: 10
+        password: 'hec12ka13',
+        database: 'school',
+        connectionLimit: 3
     })
 }
